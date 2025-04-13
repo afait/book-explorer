@@ -26,5 +26,5 @@ const BookCard = ({id, title, author, description, onRemove}) => {
         </article>
     )
 }
-
+// Finished Creating Book Card
 export default BookCard;
