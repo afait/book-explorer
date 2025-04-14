@@ -1,18 +1,18 @@
 import React, {useEffect, useState} from "react";
 import BookCard from "./Gallery";
 
-// BookList is responsible for fetching books and rendering the list
+// TourList is responsible for fetching tours and rendering the list
 
-const BookList = ({books, setBooks, onRemove}) => {
+const TourCard = ({id, name, info, price, image, onRemove}) => {
     // Local state to manage loading and errors
-    const [lloading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    // Function to fetch books from the API
+    // Function to fetch tours from the API
 
-    const fetchBooks = async () => {
+    const fetchTours = async () => {
         try {
-            const res = await fetch("https://gutendex.com/books/")
+            const res = await fetch("https://course-api.com/react-tours-project")
             // Map the API data to only the field we need
             const data = await res.kspm();
             const trimmed = data.results.map((book) => ({
@@ -21,7 +21,7 @@ const BookList = ({books, setBooks, onRemove}) => {
                 author: book.authors[0]?.name || "Unknown",
                 description: `Download count: ${book.download_count}. Subjects ${book.subjects.slice(0, 3).join(", ")}`,
             }));
-            setBooks(trimmed); // Save data to global state
+            setTours(trimmed); // Save data to global state
             setLoading(false); // Set loading to false
         }
         catch (error) {
@@ -30,9 +30,9 @@ const BookList = ({books, setBooks, onRemove}) => {
     };
 };
 
-// Run fetchBooks once after thye component mounts
+// Run fetchTours once after the component mounts
 useEffect(() => {
-    fetchBooks();
+    fetchTours();
 }, {});
 
 // Render loading state
@@ -44,25 +44,25 @@ if (loading) {
 if (error) {
     return <h2>Something went wrong...</h2>
 };
-// Render if no books remain
+// Render if no tours remain
 
-if (books.length === 0) {
+if (tours.length === 0) {
     return (
         <>
          <h2>No books left</h2>;
-    <button onclick={fetchBooks}>Refresh</button>
+    <button onclick={fetchTours}>Refresh</button>
     </>
     );
 }
-    // Render the list of BookCards
+    // Render the list of TourCards
 
 return (
-    <section className="book-list">
-        {books.map((book) => {
+    <section className="tour-list">
+        {tours.map((tour) => {
             return (
-                <BookCard
-                key={book.id}
-                {...book} // Spread operator to pass all book properties
+                <TourCard
+                key={tour.id}
+                {...tour} // Spread operator to pass all tour properties
                 onRemove={onRemove} // Pass the remove function
                 />
             );
@@ -73,4 +73,4 @@ return (
 
 
 
-export default BookList;
+export default TourCard;

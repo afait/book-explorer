@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import BookList from "./components/BookList";
+import BookList from "./components/TourCard";
 
 // Root component of the app
 function App(){
@@ -16,7 +16,7 @@ return (
   <main>
     <h1>Book Explorer</h1>
     {/* Pass state and handlers down to the BookList componenet */}
-    <BookList books={books} setBooks={setBooks} onRemove={removeBook} />
+    <TourList books={books} setBooks={setBooks} onRemove={removeBook} />
   </main>
 )
 }
