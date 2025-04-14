@@ -30,6 +30,7 @@ const TourCard = ({id, name, info, price, image, onRemove}) => {
     };
 };
 
+
 // Run fetchTours once after the component mounts
 useEffect(() => {
     fetchTours();
