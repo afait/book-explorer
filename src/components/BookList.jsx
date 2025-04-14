@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import BookCard from "./BookCard";
+import BookCard from "./Gallery";
 
 // BookList is responsible for fetching books and rendering the list
 
