@@ -11,7 +11,6 @@ function App(){
     setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
   };
 
-
 return (
   <main>
     <h1>Book Explorer</h1>
